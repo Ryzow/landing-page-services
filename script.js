@@ -63,23 +63,23 @@ Bisa info lebih detail tentang:
 - Teknologi yang digunakan
 - Contoh portfolio
 
-Terima kasih!`
+Terima kasih!`,
 };
 
 // Handle WhatsApp buttons with data-package attribute
-document.querySelectorAll('.wa-button').forEach(button => {
-  button.addEventListener('click', function(e) {
+document.querySelectorAll(".wa-button").forEach((button) => {
+  button.addEventListener("click", function (e) {
     e.preventDefault();
-    const packageType = this.getAttribute('data-package');
+    const packageType = this.getAttribute("data-package");
     const message = whatsappTemplates[packageType] || whatsappTemplates.general;
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/6283177756720?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/6283177756720?text=${encodedMessage}`, "_blank");
   });
 });
 
 // Handle CTA buttons
-document.querySelectorAll('.cta-wa').forEach(button => {
-  button.addEventListener('click', function(e) {
+document.querySelectorAll(".cta-wa").forEach((button) => {
+  button.addEventListener("click", function (e) {
     e.preventDefault();
     const message = `Halo Sastra! Saya ingin berkonsultasi tentang pembuatan landing page untuk bisnis saya.
 
@@ -90,20 +90,22 @@ Bisa info lebih detail tentang:
 
 Terima kasih!`;
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/6283177756720?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/6283177756720?text=${encodedMessage}`, "_blank");
   });
 });
 
 // Contact form submission
-document.getElementById("contact-form").addEventListener("submit", function (e) {
-  e.preventDefault();
+document
+  .getElementById("contact-form")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  const name = this.querySelector('input[type="text"]').value;
-  const email = this.querySelector('input[type="email"]').value;
-  const message = this.querySelector("textarea").value;
+    const name = this.querySelector('input[type="text"]').value;
+    const email = this.querySelector('input[type="email"]').value;
+    const message = this.querySelector("textarea").value;
 
-  if (name && email && message) {
-    const whatsappMessage = `Halo Sastra!
+    if (name && email && message) {
+      const whatsappMessage = `Halo Sastra!
 
 Nama: ${name}
 Email: ${email}
@@ -113,15 +115,18 @@ ${message}
 
 Saya ingin berkonsultasi tentang pembuatan landing page.`;
 
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/6283177756720?text=${encodedMessage}`, "_blank");
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      window.open(
+        `https://wa.me/6283177756720?text=${encodedMessage}`,
+        "_blank"
+      );
 
-    this.reset();
-    alert("Pesan berhasil dikirim! Anda akan diarahkan ke WhatsApp.");
-  } else {
-    alert("Harap lengkapi semua field!");
-  }
-});
+      this.reset();
+      alert("Pesan berhasil dikirim! Anda akan diarahkan ke WhatsApp.");
+    } else {
+      alert("Harap lengkapi semua field!");
+    }
+  });
 
 // Scroll animation
 function checkScroll() {
@@ -153,12 +158,14 @@ window.addEventListener("scroll", function () {
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     // Skip for WhatsApp links and buttons with specific classes
-    if (this.getAttribute('href').includes('wa.me') || 
-        this.classList.contains('wa-button') || 
-        this.classList.contains('cta-wa')) {
+    if (
+      this.getAttribute("href").includes("wa.me") ||
+      this.classList.contains("wa-button") ||
+      this.classList.contains("cta-wa")
+    ) {
       return;
     }
-    
+
     e.preventDefault();
     const target = document.querySelector(this.getAttribute("href"));
     if (target) {
